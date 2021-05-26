@@ -1,7 +1,8 @@
-package com.vangulo.hotel.web;
+package com.vangulo.hotel.controller.web;
 
 import com.vangulo.hotel.business.domain.RoomReservation;
 import com.vangulo.hotel.business.service.ReservationService;
+import com.vangulo.hotel.controller.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

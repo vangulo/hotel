@@ -1,4 +1,4 @@
-package com.vangulo.hotel.web;
+package com.vangulo.hotel.controller.web;
 
 import com.vangulo.hotel.data.entity.Guest;
 import com.vangulo.hotel.business.service.ReservationService;

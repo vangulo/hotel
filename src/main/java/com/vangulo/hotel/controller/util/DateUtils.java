@@ -1,4 +1,4 @@
-package com.vangulo.hotel.web;
+package com.vangulo.hotel.controller.util;
 
 import java.text.DateFormat;
 import java.text.ParseException;

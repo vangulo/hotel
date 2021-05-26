@@ -1,7 +1,10 @@
 package com.vangulo.hotel.business.domain;
 
+import io.swagger.annotations.ApiModel;
+
 import java.util.Date;
 
+@ApiModel(description = "Details about the reservation object")
 public class RoomReservation {
     public long getRoomId() {
         return roomId;
