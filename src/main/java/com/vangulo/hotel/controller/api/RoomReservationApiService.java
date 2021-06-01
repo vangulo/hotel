@@ -16,11 +16,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/reservations")
-public class RoomReservationApiSerivce {
+public class RoomReservationApiService {
     private final ReservationService reservationService;
 
     @Autowired
-    public RoomReservationApiSerivce(ReservationService reservationService) {
+    public RoomReservationApiService(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
@@ -34,4 +34,6 @@ public class RoomReservationApiSerivce {
         Date date = DateUtils.createDateFromDateString(dateString);
         return reservationService.getRoomReservationsForDate(date);
     }
+
+
 }

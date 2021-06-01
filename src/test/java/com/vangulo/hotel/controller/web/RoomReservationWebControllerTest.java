@@ -1,15 +1,14 @@
-package com.vangulo.hotel.web;
+package com.vangulo.hotel.controller.web;
 
 import com.vangulo.hotel.business.domain.RoomReservation;
 import com.vangulo.hotel.business.service.ReservationService;
 import com.vangulo.hotel.controller.util.DateUtils;
-import com.vangulo.hotel.controller.web.RoomReservationWebController;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @WebMvcTest(RoomReservationWebController.class)
 public class RoomReservationWebControllerTest {
     @MockBean

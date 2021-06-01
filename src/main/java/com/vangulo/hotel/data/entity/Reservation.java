@@ -45,7 +45,7 @@ public class Reservation {
         return reservationDate;
     }
 
-    public void setReservationDate(Date resDate) {
+    public void setReservationDate(Date reservationDate) {
         this.reservationDate = reservationDate;
     }
 }
