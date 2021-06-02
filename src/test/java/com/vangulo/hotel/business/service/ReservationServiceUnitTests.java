@@ -44,21 +44,21 @@ public class ReservationServiceUnitTests {
 
         ArrayList<Room> mockRooms = new ArrayList<>();
         Room room = new Room();
-        room.setRoomId(1l);
+        room.setRoomId(1L);
         room.setRoomName("Bedroom");
         room.setRoomNumber("10");
         mockRooms.add(room);
 
         Guest mockGuest = new Guest();
-        mockGuest.setGuestId(12l);
+        mockGuest.setGuestId(12L);
         mockGuest.setFirstName("John");
         mockGuest.setLastName("Smith");
 
         ArrayList<Reservation> mockReservations = new ArrayList<>();
         Reservation reservation = new Reservation();
-        reservation.setReservationId(123l);
-        reservation.setRoomId(1l);
-        reservation.setGuestId(12l);
+        reservation.setReservationId(123L);
+        reservation.setRoomId(1L);
+        reservation.setGuestId(12L);
         java.sql.Date dateSql = new java.sql.Date(date.getTime());
         reservation.setReservationDate(dateSql);
         mockReservations.add(reservation);
@@ -77,7 +77,7 @@ public class ReservationServiceUnitTests {
     @Test
     public void testGetHotelGuests(){
         Guest mockGuest = new Guest();
-        mockGuest.setGuestId(12l);
+        mockGuest.setGuestId(12L);
         mockGuest.setFirstName("John");
         mockGuest.setLastName("Smith");
 
@@ -91,7 +91,7 @@ public class ReservationServiceUnitTests {
 
         assertEquals("John",newGuests.get(0).getFirstName());
         assertEquals("Smith",newGuests.get(0).getLastName());
-        assertEquals(12l,newGuests.get(0).getGuestId());
+        assertEquals(12L,newGuests.get(0).getGuestId());
         verify(guestRepository).findAll();
     }
 
