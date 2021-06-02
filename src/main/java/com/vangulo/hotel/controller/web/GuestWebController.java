@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/guests")
 public class GuestWebController {
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
 
     @Autowired
     public GuestWebController(ReservationService reservationService) {

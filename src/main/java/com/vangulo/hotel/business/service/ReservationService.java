@@ -12,16 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service// make this a spring bean?
-// couple of ways to do this
-// go to java config in LearningSpringApplication class and define this using an @Bean annnotation on the class
-// great when you have to do work to construct the object, in this case no work
-// so lets just all it to be component scanned
-// by setting this as a @Service which is a sterotype of @Component
-//why @service?... this is where you usually set things like
-//transaction boundaries
-//logging boundaries
-// by using this aspects can be built aspects against this that won't apply to other classes within my stack
+@Service
 public class ReservationService {
     private final RoomRepository roomRepository;
     private final GuestRepository guestRepository;
@@ -58,14 +49,11 @@ public class ReservationService {
         for(Long id : roomReservationMap.keySet()){
             roomReservations.add(roomReservationMap.get(id));
         }
-        roomReservations.sort(new Comparator<RoomReservation>() {
-            @Override
-            public int compare(RoomReservation o1, RoomReservation o2) {
-                if (o1.getRoomName() == o2.getRoomName()){
-                    return o1.getRoomNumber().compareTo(o2.getRoomNumber());
-                }
-                return o1.getRoomName().compareTo(o2.getRoomName());
+        roomReservations.sort((o1, o2) -> {
+            if (o1.getRoomName().equals(o2.getRoomName())){
+                return o1.getRoomNumber().compareTo(o2.getRoomNumber());
             }
+            return o1.getRoomName().compareTo(o2.getRoomName());
         });
         return roomReservations;
     }
@@ -75,16 +63,23 @@ public class ReservationService {
         List<Guest> guestList = new ArrayList<>();
         guests.forEach(guestList::add);
 
-        guestList.sort(new Comparator<Guest>() {
-            @Override
-            public int compare(Guest o1, Guest o2) {
-                if(o1.getLastName() == o2.getLastName()){
-                    return o1.getFirstName().compareTo(o2.getFirstName());
-                }
-                return o1.getLastName().compareTo(o2.getLastName());
-
+        guestList.sort((o1, o2) -> {
+            if(o1.getLastName().equals(o2.getLastName())){
+                return o1.getFirstName().compareTo(o2.getFirstName());
             }
+            return o1.getLastName().compareTo(o2.getLastName());
+
         });
+//        guestList.sort(new Comparator<>() {
+//            @Override
+//            public int compare(Guest o1, Guest o2) {
+//                if(o1.getLastName().equals(o2.getLastName())){
+//                    return o1.getFirstName().compareTo(o2.getFirstName());
+//                }
+//                return o1.getLastName().compareTo(o2.getLastName());
+//
+//            }
+//        });
         return guestList;
     }
 

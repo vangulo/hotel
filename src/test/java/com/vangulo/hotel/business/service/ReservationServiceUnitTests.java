@@ -9,12 +9,9 @@ import com.vangulo.hotel.data.repository.GuestRepository;
 import com.vangulo.hotel.data.repository.ReservationRepository;
 import com.vangulo.hotel.data.repository.RoomRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +20,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class ReservationServiceUnitTests {
@@ -34,12 +32,6 @@ public class ReservationServiceUnitTests {
     GuestRepository guestRepository;
     @Mock
     RoomRepository roomRepository;
-
-//
-//    ReservationRepository reservationRepository = mock(ReservationRepository.class);
-//    GuestRepository guestRepository = mock(GuestRepository.class);
-//    RoomRepository roomRepository = mock(RoomRepository.class);
-
 
     @InjectMocks
     private ReservationService reservationService;
@@ -77,6 +69,9 @@ public class ReservationServiceUnitTests {
 
         List<RoomReservation> newRoomReservations = reservationService.getRoomReservationsForDate(date);
         assertEquals("John",newRoomReservations.get(0).getFirstName());
+        verify(guestRepository).findById(anyLong());
+        verify(roomRepository).findAll();
+        verify(reservationRepository).findReservationByReservationDate(any(java.sql.Date.class));
     }
 
     @Test
@@ -95,6 +90,9 @@ public class ReservationServiceUnitTests {
         List<Guest> newGuests = reservationService.getHotelGuests();
 
         assertEquals("John",newGuests.get(0).getFirstName());
+        assertEquals("Smith",newGuests.get(0).getLastName());
+        assertEquals(12l,newGuests.get(0).getGuestId());
         verify(guestRepository).findAll();
     }
+
 }
